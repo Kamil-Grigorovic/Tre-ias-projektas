@@ -1,0 +1,4 @@
+var searchData=
+[
+  ['test_5fcase_0',['TEST_CASE',['../class__test_8cpp.html#a3259b6758254092c6d56f13ff27751f7',1,'TEST_CASE(&quot;Studento Copy Constructor&quot;):&#160;class_test.cpp'],['../class__test_8cpp.html#a6dee270c333961752ab86d248448fc57',1,'TEST_CASE(&quot;Studento Copy Assignment Operator&quot;):&#160;class_test.cpp'],['../class__test_8cpp.html#ab891397f4b1dd7d37c66f01c04a34b1b',1,'TEST_CASE(&quot;Operatorius &lt;&lt; isveda studento duomenis&quot;):&#160;class_test.cpp'],['../class__test_8cpp.html#a6b67a57bf650a03ad1e45f9fead9db09',1,'TEST_CASE(&quot;Operatorius &gt;&gt; nuskaitydamas studento duomenis sukuria teisinga objekta&quot;):&#160;class_test.cpp'],['../functions__test_8cpp.html#a1859d25324e0cbb385385ee455267548',1,'TEST_CASE(&quot;Medianos skaiciavimas&quot;):&#160;functions_test.cpp'],['../functions__test_8cpp.html#a03d05eb59e73ce7006c1e782e1fbb723',1,'TEST_CASE(&quot;Rikiavimas ir grupavimas&quot;):&#160;functions_test.cpp']]]
+];
