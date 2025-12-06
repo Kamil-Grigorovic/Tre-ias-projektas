@@ -1,7 +1,7 @@
 #define CATCH_CONFIG_MAIN
 
 #include "catch.hpp"
-#include "new_main.h"
+#include "main.h"
 
 // Studento Copy Constructor testas
 TEST_CASE("Studento Copy Constructor") {
@@ -98,4 +98,5 @@ TEST_CASE("Operatorius >> nuskaitydamas studento duomenis sukuria teisinga objek
     CHECK(paz[2] == 10);
 
     CHECK(s.getEgzas() == 9);
+
 }
