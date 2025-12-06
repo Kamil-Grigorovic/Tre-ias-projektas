@@ -1,7 +1,7 @@
 // #define CATCH_CONFIG_MAIN
 
 #include "catch.hpp"
-#include "new_main.h"
+#include "main.h"
 
 // Medianos skaiciavimo testai
 TEST_CASE("Medianos skaiciavimas") {
@@ -124,4 +124,5 @@ TEST_CASE("Rikiavimas ir grupavimas") {
         CHECK(v_galv[1].getVard() == "Vardas1");
         CHECK(v_galv[2].getVard() == "Vardas3");
     }
+
 }
