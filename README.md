@@ -4,6 +4,7 @@
  - Numatyta diegimo vieta: `C:\Program Files\VU\Kamil-Grigorovič`
 
 **Programos paleidimas**
+
 Iš *darbalaukio*, iš *Start Menu*, tiesiai iš *diegimo aplanko*.
 
 **Šalinimas**
