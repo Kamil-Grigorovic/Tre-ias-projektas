@@ -1,0 +1,27 @@
+var new__fuctions_8cpp =
+[
+    [ "formatuoti", "new__fuctions_8cpp.html#ac9250c3cfdc85029aad41adc5bc5d13c", null ],
+    [ "generuokStudenta", "new__fuctions_8cpp.html#a638511eab3cbc4bbd35f88bd0ae0fd80", null ],
+    [ "generuokStudenta", "new__fuctions_8cpp.html#ae5d6c00d81ee81fdc52129a6cce9b156", null ],
+    [ "ivesk", "new__fuctions_8cpp.html#a79013f0e59b4ef2c74763ccd34d7fd1d", null ],
+    [ "ivesk", "new__fuctions_8cpp.html#a052e13a93e6aed70443c73da73eb2157", null ],
+    [ "iveskIsFailo", "new__fuctions_8cpp.html#ab3f6b27f8237d67a4c3463c15acc9d30", null ],
+    [ "iveskIsFailo", "new__fuctions_8cpp.html#a9e8929ee9f536a3c0afe5ab7af2aabf7", null ],
+    [ "rikiuoti", "new__fuctions_8cpp.html#ae427789bed30e3886093c46a2ec6b1c9", null ],
+    [ "rikiuotiIrSukurtGrupe", "new__fuctions_8cpp.html#ae9c7d548ab9f21a383f6b80a7e4aaf6a", null ],
+    [ "rikiuotiIrSukurtGrupe< list< Studentas< list< int > > > >", "new__fuctions_8cpp.html#ae94e9dfe0f0f1b6fa814b7325ea3c3d1", null ],
+    [ "rikiuotiIrSukurtGrupe< vector< Studentas< vector< int > > > >", "new__fuctions_8cpp.html#ad8885ab90a957feaffb5e3d4f7ae67dc", null ],
+    [ "rikiuotiIrSukurtGrupe_2", "new__fuctions_8cpp.html#acc886c4a1cecc1e144f940bd3d7e09af", null ],
+    [ "rikiuotiIrSukurtGrupe_2< list< Studentas< list< int > > > >", "new__fuctions_8cpp.html#a244f369a15ac4a864cdf8d8bb8ebebab", null ],
+    [ "rikiuotiIrSukurtGrupe_2< vector< Studentas< vector< int > > > >", "new__fuctions_8cpp.html#acdcbd27b14543019bc4e086d5e48185c", null ],
+    [ "rikiuotiIrSukurtGrupe_3", "new__fuctions_8cpp.html#ad343e8fc95d077be5182beac0e1d32ac", null ],
+    [ "rikiuotiIrSukurtGrupe_3< list< Studentas< list< int > > > >", "new__fuctions_8cpp.html#afa3d325539b06ed904244290b3c32a57", null ],
+    [ "rikiuotiIrSukurtGrupe_3< vector< Studentas< vector< int > > > >", "new__fuctions_8cpp.html#a131a61f2202fc49dcf360c6d52f3416c", null ],
+    [ "SkaiciaiSuKableliu", "new__fuctions_8cpp.html#a3b054f8adc4aa36c95289c7ebd9b0e4f", null ],
+    [ "skaiciuotiMediana", "new__fuctions_8cpp.html#ab4f54ceb6312f8e20405888b43ff97c9", null ],
+    [ "skaitytiIsFailo", "new__fuctions_8cpp.html#a3199be1667f3e1bbce8f0488d6591527", null ],
+    [ "skaitytiIsFailo", "new__fuctions_8cpp.html#aab747275018764591263d800c052a3bd", null ],
+    [ "spausdintiIFaila", "new__fuctions_8cpp.html#a760eb2699f6f302f3c54154b23b4117b", null ],
+    [ "spausdintiIFaila< list< Studentas< list< int > > > >", "new__fuctions_8cpp.html#a156ff640dc322d9e499987396f185b9f", null ],
+    [ "spausdintiIFaila< vector< Studentas< vector< int > > > >", "new__fuctions_8cpp.html#a79b9dbff3769795e46fad64b831a1c44", null ]
+];
