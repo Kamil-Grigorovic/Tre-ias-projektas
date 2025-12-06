@@ -1,3 +1,17 @@
+## Programos diegimo ir naudojimo instrukcija ##
+ - Atsisiųskite failą `ManoPrograma.exe`.
+ - Jei sistema paprašys leidimo (Windows UAC), spauskite `Yes`.
+ - Numatyta diegimo vieta: `C:\Program Files\VU\Kamil-Grigorovič`
+
+**Programos paleidimas**
+Iš *darbalaukio*, iš *Start Menu*, tiesiai iš *diegimo aplanko*.
+
+**Šalinimas**
+ - Atidarykite *Control Panel*
+ - Eikite į *Programs and Features*
+ - Suraskite *Studentų valdymo sistema*
+ - Spauskite *Uninstal*
+
 # |*Studentų valdymo sistema*| #
 | Failas | Tipas | Aprašymas |
 |---------|-------|-----------|
