@@ -1,5 +1,6 @@
 ## Programos diegimo ir naudojimo instrukcija ##
- - Atsisiųskite failą `ManoPrograma.exe`.
+ - Atsisiųskite failą `setup.exe` ir `StudentuValdymoPrograma.msi`.
+ - Paleiskite `setup.exe`
  - Jei sistema paprašys leidimo (Windows UAC), spauskite `Yes`.
  - Numatyta diegimo vieta: `C:\Program Files\VU\Kamil-Grigorovič`
 
