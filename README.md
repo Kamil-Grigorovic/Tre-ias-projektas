@@ -74,7 +74,7 @@ Realizuota:
 
 `Studentas` klasė pilnai įgyvendintas `„Rule of Three“` principas, užtikrinantys *saugų* ir *teisingą* objektų kopijavimą bei gyvavimo ciklo valdymą. Taip pat įgyvendinti perdengti *įvesties* ir *išvesties* operatoriai, kurie leidžia patogiai dirbti su `Studentas` objektais konsolėje ir failuose.
 
-![Rule Of Three](img/ruleofthree.png)
+![Rule Of Three](img/RuleOfThree.png)
 
 ## Funkcijos: ##
  - **_ivesk()_** – įveda studentą rankiniu būdu.
