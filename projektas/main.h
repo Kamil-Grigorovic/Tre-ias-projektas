@@ -1,5 +1,4 @@
 #pragma once
-#include "base.h"
 #include <iostream>
 #include <list>
 #include <vector>
@@ -10,6 +9,7 @@
 #include <chrono>
 #include <type_traits>
 #include <numeric>
+#include "base.h"
 
 using namespace std;
 
@@ -39,9 +39,9 @@ public:
     /**
      * @brief Numatytaisiais parametrais inicializuojantis konstruktorius.
      * 
-     * Inicijuoja bazinę klasę Zmogus ir nustato numatytąsias reikšmes pažymiams, egzaminui, rezultatui ir medianai.
+     * Nustato numatytąsias reikšmes pažymiams, egzaminui, rezultatui ir medianai.
      */
-    Studentas() : Zmogus(), paz(), egzas(0), rez(0), mediana(0) {}
+    Studentas() : paz(), egzas(0), rez(0), mediana(0) {}
 
     /**
      * @brief Konstruktorius su visais studento duomenimis.
@@ -55,12 +55,17 @@ public:
      * o galutinio balo ir medianos reikšmės inicializuojamos į 0.
      */
     Studentas(const string& v, const string& p, const T& paz, int e)
-        : Zmogus(v, p), paz(paz), egzas(e), rez(0), mediana(0) {}
+        : Zmogus{v, p}, paz(paz), egzas(e), rez(0), mediana(0) {}
 
     /**
      * @brief Destruktorius.
      */
-    ~Studentas() = default;
+    ~Studentas() {
+        paz.clear();
+        egzas = 0;
+        rez = 0;
+        mediana = 0;
+    }
 
     /**
      * @brief Copy Constructor.
@@ -120,14 +125,19 @@ public:
      * Perrašo bazinės klasės virtualią funkciją.
      */
     void info() const override {
-        cout << getVard() << getPav() << endl;
+        cout << getVard() << " " << getPav() << " ";
+
+        for (int x : getPaz())
+            cout << x << " ";
+
+        cout << endl;
     }
 
     /**
      * @brief Gražina pažymių konteinerį.
      * @return Pažymių konteineris.
      */
-    T getPaz() const { return paz; }
+    const T& getPaz() const { return paz; }
     /**
      * @brief Gražina egzamino balą.
      * @return Egzamino balas kaip int.
@@ -143,7 +153,7 @@ public:
      * @return Mediana kaip float.
      */
     float getMediana() const { return mediana; }
-
+    
     /**
      * @brief Nustato pažumių konteinerį.
      * @param p Naujas pažymių konteineris.
@@ -165,7 +175,6 @@ public:
      */
     void setMediana(float m) { mediana = m; }
 
-
     /**
      * @brief operator<< perkrovimas.
      * @param os Išvesties srautas (ostream), į kurį rašomi duomenys.
@@ -178,7 +187,11 @@ public:
      * @endcode
      */
     friend ostream& operator<<(ostream& os, const Studentas<T>& s) {
-        os << s.getVard() << " " << s.getPav() << " " << s.rez << " " << s.mediana;
+        os << s.getVard() << " " << s.getPav() << " | ";
+        for (const auto& pazymys : s.getPaz()) {
+            os << " " << pazymys;
+        }
+        os << " | " << s.getEgzas() << " | " << s.getRez() << " " << s.getMediana();
         return os;
     }
 
@@ -200,145 +213,66 @@ public:
      * Funkcija išvalo įvesties srauto klaidos būseną (`is.clear()`),
      * kad būtų galima toliau naudoti srautą.
      */
-    friend istream& operator>>(istream& is, Studentas<T>& s) {
+    friend istream& operator>>(istream& is, Studentas<T>& s)
+    {
         string vard, pav;
         if (!(is >> vard >> pav)) return is;
 
         s.setVard(vard);
         s.setPav(pav);
 
-        T paz;
+        T pazymiai;
         int x;
-        vector<int> temp;
 
-        while (is >> x) temp.push_back(x);
+        while (is >> x) {
+            pazymiai.push_back(x);
+    }
 
         is.clear();
-
-        if (temp.empty()) {
+    if (pazymiai.empty()) {
             s.setPaz(T{});
             s.setEgzas(0);
-            s.setRez(0);
-            s.setMediana(0);
             return is;
         }
+        auto it = std::prev(pazymiai.end());
+        int egzas = *it;
+        pazymiai.erase(it);
 
-        int egzas = temp.back();
-        temp.pop_back();
-
-        for (int v : temp) paz.push_back(v);
-
-        s.setPaz(paz);
+        s.setPaz(pazymiai);
         s.setEgzas(egzas);
 
         return is;
     }
 };
 
-/**
- * @brief Funkcija studento duomenų įvedimui iš konsolės.
- * @tparam T Pažymių konteinerio tipas.
- * @return Sukurtas objektas.
- */
+/** 
+ * @brief Priklauso studento įvedimui. 
+ * Šabloninės funkcijos deklaracijos.
+ * @param T Pažymių konteinerio tipas (pvz., std::vector<int>, std::list<int>).
+*/
 template <typename T>
 Studentas<T> ivesk();
-/**
- * @brief Funkcija vienos eilutės skaitymui iš failo.
- * @tparam T Pažymių konteinerio tipas.
- * @param line Eilutė iš failo.
- * @return Sukurtas objektas.
- */
 template <typename T>
-Studentas<T> iveskIsFailo(const string& line);
-/**
- * @brief Funkcija medianos skaičiavimui.
- * @tparam T Pažymių konteinerio tipas.
- * @param pazymiai Pažymių konteineris.
- * @return Mediana kaip float.
- */
+Studentas<T> iveskIsFailo(const string &line);
 template <typename T>
-float skaiciuotiMediana(const T& pazymiai);
-/**
- * @brief Funkcija viso failo skaitymui.
- * @tparam T Pažymių konteinerio tipas.
- * @param failoPavadinimas Failo pavadinimas.
- * @return Konteineris su visais studentų objektais.
- */
+float skaiciuotiMediana(const T &pazymiai);
 template <typename T>
-T skaitytiIsFailo(const string& failoPavadinimas);
-/**
- * @brief Funkcija atsitiktinio studento generavimui.
- * @tparam T Pažymių konteinerio tipas.
- * @return Studentas objektas.
- */
+T skaitytiIsFailo(const string &failoPavadinimas);
 template <typename T>
 Studentas<T> generuokStudenta();
-/**
- * @brief Funkcija studentų grupavimui ir rikiavimui pagal kriterijų.
- * @tparam T Konteinerio tipas.
- * @param visiStudentai Konteineris su visais studentais.
- * @param vargsiukai Išvesties konteineris blogai besimokantiems studentams.
- * @param galvociai Išvesties konteineris gerai besimokantiems studentams.
- * @param kriterijus Kriterijus pagal kurį grupuojama.
- * @details
- * Funkcija grupuoja studentus pagal 1 strategiją.
- */
 template <typename T>
-void rikiuotiIrSukurtGrupe(const T& visiStudentai, T& vargsiukai, T& galvociai, const string& kriterijus);
-/**
- * @brief Funkcija studentų grupavimui ir rikiavimui pagal kriterijų.
- * @tparam T Konteinerio tipas.
- * @param visiStudentai Konteineris su visais studentais.
- * @param vargsiukai Išvesties konteineris blogai besimokantiems studentams.
- * @param galvociai Išvesties konteineris gerai besimokantiems studentams.
- * @param kriterijus Kriterijus pagal kurį grupuojama.
- * @details
- * Funkcija grupuoja studentus pagal 2 strategiją.
- */
+void rikiuotiIrSukurtGrupe(const T &visiStudentai, T &vargsiukai, T &galvociai, const string &kriterijus);
 template <typename T>
-void rikiuotiIrSukurtGrupe_2(T& visiStudentai, T& vargsiukai, const string& kriterijus);
-/**
- * @brief Funkcija studentų grupavimui ir rikiavimui pagal kriterijų.
- * @tparam T Konteinerio tipas.
- * @param visiStudentai Konteineris su visais studentais.
- * @param vargsiukai Išvesties konteineris blogai besimokantiems studentams.
- * @param galvociai Išvesties konteineris gerai besimokantiems studentams.
- * @param kriterijus Kriterijus pagal kurį grupuojama.
- * @details
- * Funkcija grupuoja studentus pagal 3 strategiją.
- */
+void rikiuotiIrSukurtGrupe_2(T &visiStudentai, T &vargsiukai, const string &kriterijus);
 template <typename T>
-void rikiuotiIrSukurtGrupe_3(T& visiStudentai, T& vargsiukai, const string& kriterijus);
-/**
- * @brief Funkcija studentų duomenų spausdinimui į failą.
- * @tparam T Konteinerio tipas.
- * @param grupe Konteineris su studentais.
- * @param failoVardas Išvesties failo pavadinimas.
- */
+void rikiuotiIrSukurtGrupe_3(T &visiStudentai, T &vargsiukai, const string &kriterijus);
 template <typename T>
-void spausdintiIFaila(const T& grupe, const string& failoVardas);
-/**
- * @brief Funkcija konteinerio rikiavimui pagal pateiktą komparatorių.
- * @tparam Container KOnteinerio tipas.
- * @tparam Comparator Komparatoriaus tipas.
- * @param temp Rikiuojamas konteineris.
- * @param comp Komparatorius rikiavimui.
- * @details
- * Funkcija automaatiškai aptinka ar konteineris yra std::list ar kitas ir atlieka atitinkamą rikiavimą.
- */
+void spausdintiIFaila(const T &grupe, const string &failoVardas);
 template <typename Container, typename Comparator>
-void rikiuoti(Container& temp, Comparator comp);
+void rikiuoti(Container &temp, Comparator comp);
 
 /**
- * @brief Funkcija stringo formatavimui, kad jis būtų centruotas nurodytame plote.
- * @param s Pradinis stringas.
- * @param plotis Norimas plotis.
- * @return Suformatuotas stringas.
+ * @brief Funkcija, kuri prideda tarpu, kad stringas uzimtu n simboliu
  */
 string formatuoti(string s, int plotis);
-/**
- * @brief Funkcija skaičiaus suformatavimui su kableliu.
- * @param value Skaičius kaip float.
- * @return Suformatuotas stringas.
- */
 string SkaiciaiSuKableliu(float value);
